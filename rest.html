@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest countries </title>
+</head>
+
+<body>
+    <div id="parent">
+        <input type="text" id="country-name">
+        <button id="check-btn">check</button>
+    </div>
+
+
+
+
+
+    <!-- Javascript  -->
+
+    <script>
+        document.getElementById("check-btn").addEventListener("click", function () {
+            const countryName = document.getElementById("country-name").value;
+            fetch(`https://restcountries.com/v3.1/name/${countryName}`)
+                .then(res => res.json())
+                .then((res) => {
+                    console.log(res);
+                    console.log(res[0].name.common);
+                    
+                    const parent = document.getElementById("parent");
+
+                    let newDiv = document.createElement("div");
+                    newDiv.innerHTML = "<a>" + res[0].name.common + "</a>"+"<br>"+"<i>"+res[0].capital[0]+"</i>" ;
+
+                    parent.appendChild(newDiv);
+                   
+                })
+        });
+
+
+        // function details(){
+            
+        // }
+        // const allCountry = document.querySelectorAll("a").addEventListener("click",function(){
+        //     console.log("ok");
+        // });
+
+        // for (let x = 0; x < allCountry.length; x++) {
+            
+        //     allCountry[x].addEventListener("click",function(){
+        //         console.log("it's ok");
+        //     }
+        //     )
+        //     console.log(all[x]);
+        // }
+
+
+
+        // if(all=true){
+        //     all.addEventListener("click",function(){
+        //     console.log('ok');
+        //  });
+        // }
+        
+        
+
+    </script>
+</body>
+
+</html>
